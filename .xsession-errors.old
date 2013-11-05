@@ -1,0 +1,73 @@
+Backend     : gconf
+Integration : true
+Profile     : unity
+Adding plugins
+Initializing core options...done
+Initializing composite options...done
+Initializing opengl options...done
+** Message: applet now removed from the notification area
+Initializing decor options...done
+Initializing vpswitch options...done
+Initializing snap options...done
+Initializing mousepoll options...done
+Initializing resize options...done
+Initializing place options...done
+Initializing move options...done
+** Message: using fallback from indicator to GtkStatusIcon
+Initializing wall options...done
+Initializing grid options...done
+I/O warning : failed to load external entity "/home/jjang/.compiz/session/10a98f94a37c5c47a138311043819105100000016390033"
+Initializing session options...done
+Initializing gnomecompat options...done
+Initializing animation options...done
+Initializing fade options...done
+Initializing unitymtgrabhandles options...done
+Initializing workarounds options...done
+Initializing scale options...done
+compiz (expo) - Warn: failed to bind image to texture
+Initializing expo options...done
+Initializing ezoom options...done
+
+(compiz:1708): GConf-CRITICAL **: gconf_client_add_dir: assertion `gconf_valid_key (dirname, NULL)' failed
+Initializing unityshell options...done
+Setting Update "main_menu_key"
+Setting Update "run_key"
+** Message: moving back from GtkStatusIcon to indicator
+
+(gnome-settings-daemon:1688): color-plugin-WARNING **: failed to get edid: unable to get EDID for output
+
+(gnome-settings-daemon:1688): color-plugin-WARNING **: unable to get EDID for xrandr-Virtual1: unable to get EDID for output
+
+(gnome-settings-daemon:1688): GLib-CRITICAL **: g_variant_get_int32: assertion `g_variant_is_of_type (value, G_VARIANT_TYPE_INT32)' failed
+WARNING:root:timeout reached, exiting
+Nautilus-Share-Message: Called "net usershare info" but it failed: 'net usershare'에서 에러 255을(를) 반환: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error 그런 파일이나 디렉터리가 없습니다
+Please ask your system administrator to enable user sharing.
+
+
+(gnome-settings-daemon:1688): print-notifications-plugin-CRITICAL **: gsd_print_notifications_plugin_finalize: assertion `plugin->priv != NULL' failed
+
+(gnome-settings-daemon:1688): GLib-GObject-CRITICAL **: g_object_unref: assertion `G_IS_OBJECT (object)' failed
+
+(gnome-settings-daemon:1688): GLib-GObject-CRITICAL **: g_object_unref: assertion `G_IS_OBJECT (object)' failed
+gtk-window-decorator: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.0.
+
+(gnome-fallback-mount-helper:1728): Gdk-WARNING **: gnome-fallback-mount-helper: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+
+
+(bluetooth-applet:1725): Gdk-WARNING **: bluetooth-applet: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+
+
+(gdu-notification-daemon:1869): Gdk-WARNING **: gdu-notification-daemon: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+
+
+(telepathy-indicator:1873): Gdk-WARNING **: telepathy-indicator: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+
+
+(gnome-screensaver:1894): Gdk-WARNING **: gnome-screensaver: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+
+
+(nm-applet:1727): Gdk-WARNING **: nm-applet: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+
+
+(update-notifier:1999): Gdk-WARNING **: update-notifier: Fatal IO error 11 (자원이 일시적으로 사용 불가능함) on X server :0.
+

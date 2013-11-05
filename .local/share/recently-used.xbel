@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xbel version="1.0"
+      xmlns:bookmark="http://www.freedesktop.org/standards/desktop-bookmarks"
+      xmlns:mime="http://www.freedesktop.org/standards/shared-mime-info"
+>
+  <bookmark href="file:///home/jjang/Downloads/lab03" added="2013-10-02T05:28:49Z" modified="2013-10-02T05:29:06Z" visited="2013-10-02T05:28:49Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/zip"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-02T05:28:49Z" count="1"/>
+          <bookmark:application name="nautilus" exec="&apos;file-roller %U&apos;" modified="2013-10-02T05:29:05Z" count="1"/>
+          <bookmark:application name="File Roller" exec="&apos;file-roller&apos;" modified="2013-10-02T05:29:06Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang" added="2013-10-02T05:29:20Z" modified="2013-10-02T05:29:20Z" visited="2013-10-02T05:29:21Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="inode/directory"/>
+        <bookmark:applications>
+          <bookmark:application name="파일 롤러" exec="&apos;file-roller %u&apos;" modified="2013-10-02T05:29:20Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Pictures/datagram.png" added="2013-10-06T08:13:41Z" modified="2013-10-06T08:15:19Z" visited="2013-10-06T08:13:41Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNOME Screenshot" exec="&apos;eog %u&apos;" modified="2013-10-06T08:13:41Z" count="1"/>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-06T08:15:19Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Pictures/stream.png" added="2013-10-06T08:14:03Z" modified="2013-10-06T08:15:19Z" visited="2013-10-06T08:14:03Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="image/png"/>
+        <bookmark:groups>
+          <bookmark:group>Graphics</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="GNOME Screenshot" exec="&apos;eog %u&apos;" modified="2013-10-06T08:14:03Z" count="1"/>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-06T08:15:19Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/DatagramServer.c" added="2013-10-06T08:47:47Z" modified="2013-10-06T08:47:47Z" visited="2013-10-06T08:47:47Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="지에디트" exec="&apos;gedit %u&apos;" modified="2013-10-06T08:47:47Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Lab01_01_tcp_client.c" added="2013-10-06T08:48:05Z" modified="2013-10-06T08:48:05Z" visited="2013-10-06T08:48:05Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="지에디트" exec="&apos;gedit %u&apos;" modified="2013-10-06T08:48:05Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/StreamServer.c" added="2013-10-06T08:48:25Z" modified="2013-10-06T08:48:25Z" visited="2013-10-06T08:48:25Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="지에디트" exec="&apos;gedit %u&apos;" modified="2013-10-06T08:48:25Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/StreamClient.c" added="2013-10-06T08:48:29Z" modified="2013-10-06T09:35:18Z" visited="2013-10-06T08:48:30Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="지에디트" exec="&apos;gedit %u&apos;" modified="2013-10-06T09:35:18Z" count="6"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/lab03(1)" added="2013-10-06T08:51:09Z" modified="2013-10-06T08:51:09Z" visited="2013-10-06T08:51:09Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/octet-stream"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-06T08:51:09Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Desktop/lab03(1)" added="2013-10-06T08:51:25Z" modified="2013-10-06T08:51:31Z" visited="2013-10-06T08:51:25Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="application/zip"/>
+        <bookmark:applications>
+          <bookmark:application name="File Roller" exec="&apos;file-roller&apos;" modified="2013-10-06T08:51:31Z" count="4"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/DatagramClient.c" added="2013-10-06T08:51:52Z" modified="2013-10-06T10:06:18Z" visited="2013-10-06T08:51:53Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="지에디트" exec="&apos;gedit %u&apos;" modified="2013-10-06T10:06:18Z" count="38"/>
+          <bookmark:application name="nautilus" exec="&apos;gedit %U&apos;" modified="2013-10-06T09:30:07Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/DatagramClient.c.save" added="2013-10-06T10:02:03Z" modified="2013-10-06T10:02:25Z" visited="2013-10-06T10:02:03Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/plain"/>
+        <bookmark:groups>
+          <bookmark:group>gedit</bookmark:group>
+        </bookmark:groups>
+        <bookmark:applications>
+          <bookmark:application name="지에디트" exec="&apos;gedit %u&apos;" modified="2013-10-06T10:02:25Z" count="2"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/DatagramClient_Echo.c" added="2013-10-30T05:22:46Z" modified="2013-10-30T05:22:46Z" visited="2013-10-30T05:22:46Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:22:46Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/DatagramClient_PressEnter.c" added="2013-10-30T05:22:49Z" modified="2013-10-30T05:22:49Z" visited="2013-10-30T05:22:49Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:22:49Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/DatagramServer_Echo_DoubleSocket.c" added="2013-10-30T05:22:53Z" modified="2013-10-30T05:22:53Z" visited="2013-10-30T05:22:53Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:22:53Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/DatagramServer_Echo_SingleSocket.c" added="2013-10-30T05:22:56Z" modified="2013-10-30T05:22:56Z" visited="2013-10-30T05:22:56Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:22:56Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/DatagramServer_PressEnter.c" added="2013-10-30T05:22:59Z" modified="2013-10-30T05:22:59Z" visited="2013-10-30T05:22:59Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:22:59Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/StreamClient_Echo.c" added="2013-10-30T05:23:02Z" modified="2013-10-30T05:23:02Z" visited="2013-10-30T05:23:02Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:23:02Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/StreamClient_PressEnter.c" added="2013-10-30T05:23:05Z" modified="2013-10-30T05:23:05Z" visited="2013-10-30T05:23:05Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:23:05Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/StreamServer_Echo_DoubleClient.c" added="2013-10-30T05:23:11Z" modified="2013-10-30T05:23:11Z" visited="2013-10-30T05:23:11Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:23:11Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+  <bookmark href="file:///home/jjang/Downloads/StreamServer_PressEnter.c" added="2013-10-30T05:23:14Z" modified="2013-10-30T05:23:14Z" visited="2013-10-30T05:23:14.383510Z">
+    <info>
+      <metadata owner="http://freedesktop.org">
+        <mime:mime-type type="text/x-csrc"/>
+        <bookmark:applications>
+          <bookmark:application name="Firefox" exec="&apos;firefox %u&apos;" modified="2013-10-30T05:23:14Z" count="1"/>
+        </bookmark:applications>
+      </metadata>
+    </info>
+  </bookmark>
+</xbel>

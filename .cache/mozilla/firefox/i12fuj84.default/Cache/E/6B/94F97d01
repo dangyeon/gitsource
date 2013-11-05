@@ -1,0 +1,463 @@
+
+<!--보안 로그인 추가 2008.12.16 park sun young-->
+
+
+<!--DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"-->
+<!--DOCTYPE html PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN' 'http://www.w3.org/TR/html4/loose.dtd'-->
+<html>
+<head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <TITLE>경성대학교 포탈정보시스템[1-3]</TITLE>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+  <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+  <LINK REL="StyleSheet" HREF="/ptl/style/Content.css" TYPE="text/css">
+  <SCRIPT type="text/JavaScript" SRC="/ptl/script/Common.js"></SCRIPT>
+  <SCRIPT type="text/JavaScript" SRC="/ptl/script/LinkedSelectBox.js"></SCRIPT>
+<META http-equiv="Content-Type" content="text/HTML; charset=UTF-8">
+<SCRIPT type="text/JavaScript" src="/ptl/EPKICommon.js"></SCRIPT>
+<SCRIPT type="text/JavaScript">
+    var cookietabname = "kptllogintab";
+    
+    //기존(학생) 로그인
+    function doLogin() {
+            var varForm = document.forms[0];
+            var varLoginId = varForm.ssousername;
+            var varLoginPw = varForm.password;
+            var sPRTC=window.location["protocol"];
+            var sHREF="";
+
+            sHREF=window.location["href"].replace(location.pathname,"/ptl/portal.Login");
+
+            if (varLoginId.value == "") {
+                alert("아이디를 입력하세요");
+                varLoginId.focus();
+                return;
+            }
+            if (varLoginPw.value == "") {
+                alert("비밀번호를 입력하세요");
+                varLoginPw.focus();
+                return;
+            }
+
+            if(varForm.safeChk.checked){
+                if(sPRTC.toUpperCase()!="HTTPS:"){
+//                 sHREF="HTTPS:"+sHREF.substring(sPRTC.length,sHREF.length);
+//                 window.location.replace(sHREF);
+                  sHREF = sHREF.replace(/http\:/, "https:");
+                }
+            }else{
+                  sHREF = sHREF.replace(/https\:/, "http:");
+            }
+            varForm.action=sHREF;
+            varForm.target ="_self";
+            varForm.submit();
+    }
+
+    //인증서 로그인
+    function doCertLogin()
+    {
+      installModule(); //일단 다시한번 이 스크립트를 타게 해서 설치하게도록 유도한다.
+      checkLoad();
+//      if (!checkLoad()) {--2012.6.7 삭제 후 원본대로 되돌려놓음
+////        if (confirm("클라이언트 모듈의 로딩이 완료되지 않았습니다.\n잠시 후 다시 로그인 하시거나 새로고침 후 이용하시기 바랍니다.\n지금 바로 새로고침 하시려면 확인 버튼을 클릭하십시요.")) {
+////          pageReload();
+////        } else {
+////          return;
+////        }
+//        alert("클라이언트 모듈의 로딩이 완료되지 않았습니다.\n잠시 후 다시 로그인 하시거나 새로고침(키보드 F5키) 후 이용하시기 바랍니다.");
+//        return;
+//      }
+      
+      var theForm = document.forms[0];
+      var strSignResult;
+      
+      strSignResult = Sign(1, "", "경성대학교");
+      if(strSignResult == "")
+      {
+        ECTErrorInfo();
+      } else if(strSignResult == "100") {
+          //인증서 창을 그냥 닫으면 아무일도 안함.
+      } else {
+        theForm.action = window.location["href"].replace(location.pathname,"/ptl/portal.Login");
+        theForm.SignedData.value = strSignResult;
+        theForm.target ="_self";
+        theForm.submit();
+      }
+    }
+    
+    function doRegisterUser() {
+      var varForm = document.forms[0];
+	    var winl = (screen.width - 450) / 2;
+	    var wint = (screen.height - 600) / 2;
+	    var winprops = "height="+600+",width="+450+",top="+wint+",left="+winl+",scrollbars=none";
+      var popUpWin = window.open("/ptl/include/agreement.jsp", "RegisterUser", winprops);
+//      //2009.01 보안 로그인 처리 - park sun young
+//      if(varForm.safeChk.checked){
+//          popUpWin = window.open((location.href.replace(/http\:/, "https:")).replace(location.pathname,"/ptl/include/agreement.jsp"), "RegisterUser", winprops);
+//      }
+      popUpWin.focus();
+    }
+
+    function doIdPasswdSearch() {
+      var varForm = document.forms[0];
+	    var winl = (screen.width - 450) / 2;
+	    var wint = (screen.height - 540) / 2;
+	    var winprops = "height="+460+",width="+450+",top="+wint+",left="+winl+",scrollbars=auto";
+      var popUpWin = window.open("/ptl/userservice/idpasswdsearch.jsp", "IdPasswordSearch", winprops);
+      //2009.01 보안 로그인 처리 - park sun young
+//      var sPRTC=window.location["protocol"];
+//      var sHREF=window.location["href"].replace(location.pathname,"/ptl/userservice/idpasswdsearch.jsp");
+//      if(varForm.safeChk.checked){
+//          popUpWin = window.open((location.href.replace(/http\:/, "https:")).replace(location.pathname,"/ptl/userservice/idpasswdsearch.jsp"), "IdPasswordSearch", winprops);
+//          sHREF = sHREF.replace(/http\:/, "https:");
+//          popUpWin = window.open(sHREF, "IdPasswordSearch", winprops);
+//      }
+      popUpWin.focus();
+    }
+
+    function getKey(e) {
+            var varKey = null;
+            if (!navigator.appName.indexOf ("Netscape")) {
+              varKey = e.which;
+            } else {
+              varKey = event.keyCode;
+            }
+
+            return varKey;
+    }
+
+    function goPasswd(e) {
+            if (getKey(e) == "13") {
+              document.forms[0].password.focus();
+            }
+    }
+
+    function goLogin(e) {
+            if (getKey(e) == "13") {
+              doLogin();
+            }
+    }
+
+    function doInit() {
+          var version=0;
+          var varForm = document.forms[0];
+//          var sPRTC=window.location["protocol"]; 
+//          var sHREF=window.location["href"].replace(location.pathname,"/ptl/portal.Login"); 
+         
+         // 로그인 메세지 
+          
+//          
+//          //https 로 리턴 될 경우, http 로 replace
+//          if(sPRTC.toUpperCase()!="HTTP:"){ 
+//              sHREF = sHREF.replace(/https\:/, "http:");
+//              varForm.ssousername.value= "";
+//              varForm.action=sHREF;
+//              varForm.target ="_self";
+//              varForm.submit(); 
+//          }   
+          
+          //처음 로그인 페이지 로그인 시, default 보안 로그인 체크
+          //if(varForm.safeChk.checked = "false"){  
+          if (varForm.safeChk != null)  varForm.safeChk.checked = "true";
+          //}
+          //end
+          
+          if (navigator.appVersion.indexOf("MSIE") != -1) {
+              temp = navigator.appVersion.split("MSIE");
+              version = parseFloat(temp[1]);
+          }
+
+          if (version < 5.5) {
+              alert("본 사이트는 Internet Explorer 5.5 version 이상 / 1024 X 768 Resolution에 최적화 되어있습니다. "
+                  + "IE 이외의 웹브라우져 사용시 일부 서비스가 정상동작하지 않을 수 있습니다.");
+          }
+          
+          //기존에 로그인 했던 방식을 그대로 보여줌
+          var selectTab = getCookie(cookietabname);
+          if (selectTab != "idpw" && selectTab != "cert") {
+            selectTab = "idpw";
+          }
+          setTab(selectTab);
+          
+          if (selectTab == "idpw") {
+            document.forms[0].ssousername.focus();
+          }
+
+    }
+
+    //보안 로그인 이미지 누를 경우, 체크 true,false 설정
+    //add by. park sun young 2009.01
+    function chkValue(){
+        var theForm = document.forms[0];
+        if(theForm.safeChk.checked){
+            theForm.safeChk.checked = false;
+        }else{
+            theForm.safeChk.checked = true;
+        }
+    }
+    
+    //TAB 선택
+    function setTab(areaname) {
+      document.getElementById("idpwArea").style.display = "none";
+      document.getElementById("certArea").style.display = "none";
+      document.getElementById(areaname + "Area").style.display = "block";
+      
+      setCookie(cookietabname, areaname, 30);
+      
+      if (areaname == "cert") {
+       installModule();
+      }      
+    }
+    
+    //인증서관련 모듈 설치 및 확인
+    function installModule() {
+      if (!CheckEPKIWcJTl()) {  //모듈 적용(모듈로딩완료되었는지)이 안되어 있다면 설치및로딩 하게 함(이 부분을 빼면 객체가 여러개가 됨)
+        //EPKI Client Toolkit 설치 확인, 객체 생성 및 공통 속성 지정
+        SetupObjECT(true);
+        InitObjECT();
+      }
+    }
+
+    //인증서 등록
+    function CertRegister() {
+      //alert("현재 인증서등록/재등록 서비스에 장애가 발생하였습니다.\n2월 경 서비스가 가능할 예정이므로 다음에 이용하시기 바랍니다.");
+      //return;
+      installModule(); //일단 다시한번 이 스크립트를 타게 해서 설치하게도록 유도한다.
+      checkLoad();
+//      if (!checkLoad()) {--2012.6.7 삭제 후 원본대로 되돌려놓음
+////        if (confirm("클라이언트 모듈의 로딩이 완료되지 않았습니다.\n잠시 후 다시 로그인 하시거나 새로고침 후 이용하시기 바랍니다.\n지금 바로 새로고침 하시려면 확인 버튼을 클릭하십시요.")) {
+////          pageReload();
+////        } else {
+////          return;
+////        }
+//        alert("클라이언트 모듈의 로딩이 완료되지 않았습니다.\n잠시 후 다시 로그인 하시거나 새로고침(키보드 F5키) 후 이용하시기 바랍니다.");
+//        return;
+//      }
+    
+      var varTarget = "_blank";
+      var varWidth  = 453;
+      var varHeight = 530;
+      var Top = (window.screen.availHeight - varHeight) / 2;
+      var Left = (window.screen.availWidth - varWidth) / 2;
+      if (Top < 0) Top = 0;
+      if (Left < 0) Left = 0;
+    
+      var popupWin = window.open("/ptl/cert/RegisterCert.jsp", varTarget, "menubar=0,resizable=yes,scrollbars=yes,status=1,top="+Top+",left="+Left+",width="+varWidth+",height="+varHeight);
+    }
+    
+    //인증서 백업
+    function doCertBackup() {
+      if (confirm("행정전자서명 백업(관리) 페이지를 여시겠습니까?\n(범용 공인인증서는 발급기관 사이트을 이용하여야 합니다)")) {
+        window.open("http://www.epki.go.kr/service.sub06.do#btn");
+      }
+    }
+
+    function openCertHelp() {
+      window.open("/ptl/userservice/ksportalHelp.html");
+    }
+    
+</SCRIPT>
+
+<SCRIPT type="text/JavaScript">
+<!--
+  var favoriteurl="http://portal.ks.ac.kr";
+  var favoritetitle="경성대학교 포탈정보시스템";
+
+  function addfavorites()
+  {
+    if (document.all)
+      window.external.AddFavorite(favoriteurl,favoritetitle)
+  }
+
+  function addhome()
+  {
+    if(document.all)
+      document.body.style.behavior="url(#default#homepage)";
+    document.body.setHomePage(favoriteurl);
+  }
+//-->
+</SCRIPT>
+
+<!-- ########################################################
+     .css 파일을 대체하는 Style 설정 시작
+     ######################################################## //-->
+<style type="text/css">
+  body {
+    overflow:hidden;;
+    font-family:돋움;font-size:9pt;line-height:20px;
+    margin:0px;padding:0px;
+  }
+
+  form { display:inline; }
+  img { border:0px; }
+
+  #FullArea { position:relative;top:0px;left:0px;width:100%;height:100%;z-index:5; text-align:-moz-center; #text-align:center; }
+  #LoginArea { position:absolute; top:50%;left:50%;margin:-180px 0px 0px -350px;width:701px; height:359px; z-index:6; }
+  
+  /*#topLine { position:relative;;top:0px;left:0px;width:830px;height:5px;background-color:#bfbfbf; }*/
+  /*#imgArea { position:absolute;top:5px;left:0px;width:830px;height:375px;overflow:hidden;}*/
+  
+  /*#Tab_idpw { position:absolute;top:10px;left:549px; z-index:22; } */
+  /*#Tab_cert { position:absolute;top:10px;left:700px; z-index:22; } */
+  /*#idpwArea { position:relative;top:0px;left:0px;width:100%;height:100%;z-index:7; } */
+  /*#certArea { position:relative;top:0px;left:0px;width:100%;height:100%;z-index:8; }*/
+  
+  /*#KSBTN1 { position:absolute;top:336px;left:658px;z-index:20; width:83px;height:14px; }*/
+  /*#KSBTN2 { position:absolute;top:336px;left:749px;z-index:21; width:83px;height:14px; }*/
+
+  #stuBackground { position:absolute;top:0px;left:0px;width:701px;height:359px;overflow:hidden;}
+  #stuImg { position:absolute;top:7px;left:7px;width:365px;height:327px;overflow:hidden;}
+  #stuTab_idpw { position:absolute;top:134px;left:390px;z-index:20;}
+  #stuTab_cert { position:absolute;top:134px;left:541px;z-index:21;}
+  #LoginID { position:absolute;top:244px;left:458px; z-index:22; }
+  #LoginPS { position:absolute;top:268px;left:458px; z-index:23; }
+  #LoginBTN { position:absolute;top:240px;left:621px;z-index:25;}
+  #getIdPs { position:absolute;top:310px;left:436px;z-index:26;}
+  #RegPortal { position:absolute;top:310px;left:560px;z-index:27;}
+  #LoginSecurity { position:absolute;top:224px; left:454px; z-index:28;}
+  #PortalNoticeStd { position:absolute;top:370px;left:0px;width:700; z-index:29; text-align:center;}
+  #idpwexHelp { position:absolute;top:340px; left:630px; z-index:30;}
+
+  #CertBackground { position:absolute;top:0px;left:0px;width:701px;height:359px;overflow:hidden;}
+  #CertImg { position:absolute;top:7px;left:7px;width:365px;height:327px;overflow:hidden;}
+  #CertTab_idpw { position:absolute;top:134px;left:390px;z-index:20;}
+  #CertTab_cert { position:absolute;top:134px;left:541px;z-index:21;}
+  #CertLogin { position:absolute;top:219px;left:472px; z-index:31; display:none}
+  #CertWait { position:absolute;top:232px;left:505px; z-index:31; font-size: 9pt; font-weight: bold; color: #ffffff;}
+  #CertRegister { position:absolute;top:273px;left:433px;z-index:32;}
+  #CertBackup { position:absolute;top:273px; left:546px; z-index:33;}
+  #Certndoc { position:absolute;top:310px;left:391px;z-index:27;}
+  #CertgetIdPs { position:absolute;top:310px;left:484px;z-index:26;}
+  #CertRegPortal { position:absolute;top:310px;left:591px;z-index:27;}
+  #PortalNoticePro { position:absolute;top:370px;left:0px;width:700; z-index:29; text-align:center;}
+  #CertexHelp { position:absolute;top:340px; left:630px; z-index:30;}
+  
+  .inputtext { background-color:#f5f5f5; height:19px;width:150px;border:1px solid #cccccc; padding:2; font-family:돋움,Verdana;font-size:9pt;font-weight:bold;color:#101010; ; }
+
+  .chkSecurity { font-family:돋움,Verdana; font-size:9pt;color:#606060; line-height:13px;letter-spacing:-1px; text-decoration:none; }
+  .chkSecurity:link {color:#606060; }
+  .chkSecurity:active {color:#606060; }
+  .chkSecurity:visited {color:#606060;  }
+  .chkSecurity:hover   {color:#d71920; }
+
+  img { border:0px none; }
+
+  .LeftCoverArea { position:absolute;top:0px;left:0px;width:585px;height:404px;visiblity:hidden; z-index:55;}
+</style>
+<!-- ########################################################
+     .css 파일을 대체하는 Style 설정 종료
+     ######################################################## //-->
+</HEAD>
+<body style="margin:0px;padding:0px;background-color:#ffffff;overflow:hidden;" onLoad="JavaScript:doInit();">
+<FORM method=post AutoComplete="off">
+<input type=hidden name=SignedData value="">
+<!-- 여기서부터 실제 내용이 바뀌는 부분입니다. //-->
+<div id="FullArea" >
+  <div id="LoginArea">
+    <!--div id="topLine"><img src="./images/blank.gif" width=1 height=1 alt="" title=""></div>
+    <div id="imgArea"><img src="./images/mainImg.jpg" alt="경성대학교 풍경"><img src="./images/info_bg.jpg" alt="" title=""></div-->
+    
+    <!-- 로그인 방식 선택 //-->
+    <!--div id="Tab_idpw"><a href="javascript:setTab('idpw');" alt="아이디,패스워드 로그인 방식">[아이디,패스워드]</a></div>
+    <div id="Tab_cert"><a href="javascript:setTab('cert');" alt="인증서 로그인 방식">[인증서]</a></div-->
+    
+    <!-- 학생로그인 아이디,패스워드방식 TAB //-->
+    <div id="idpwArea" style="display:block">
+      <!-- 배경 이미지-->
+      <div id="stuBackground"><img src="./images/background_stu.jpg"></div>
+      <!-- 사진(광고) 이미지 -->
+      <div id="stuImg"><iframe src='http://www.ks.ac.kr/ksadmin/ksadm_e/ksadm_e01/portalLogin_viewer.php' width=365 height=327 frameborder=0 scrolling=0 name='portalImgFrame' alt='포탈로그인 이미지 영역' id='portalImgFrame' marginwidth=0 marginheight=0></iframe></div>
+      <!-- TAB -->
+      <div id="stuTab_idpw"><!--a href="javascript:setTab('idpw');" alt="기존 로그인 방식"--><img src="./images/tabstu_stu.jpg" width="151" height="25" alt="기존 로그인 방식"><!--/a--></div>
+      <div id="stuTab_cert"><a href="javascript:setTab('cert');" alt="교직원 로그인 방식"><img src="./images/tabemp_stu.jpg" width="151" height="25" alt="교직원 로그인 방식"></a></div>
+      <!-- 아이디부분 //-->
+      <div id="LoginID"><INPUT class="inputtext" onkeypress="JavaScript:goPasswd(event);" id="c2" tabIndex="1" maxlength="20" name="ssousername" alt="아이디를 입력하는 곳입니다."></div>
+      <!-- 보안로그인 //-->
+      <div id="LoginSecurity"><INPUT onkeypress="JavaScript:goLogin(event);" type="checkbox" name="safeChk" tabindex="3" style="vertical-align:middle;" alt="체크하시면 보안성이 향상됩니다."><a href="javaScript:chkValue();" class="chkSecurity"></a></div>
+      <!-- 패스워드부분 //-->
+      <div id="LoginPS"><INPUT class="inputtext" onkeypress="JavaScript:goLogin(event);" tabIndex="2" maxlength="50" type="password" name="password" alt="비밀번호를 입력하는 곳입니다."></div>
+      <!-- 로그인 버튼 //-->
+      <div id="LoginBTN"><a href="javascript:javaScript:doLogin();" tabIndex="4"><img src="./images/loginbtn_stu.jpg" width="59" height="52" alt="경성포탈에 로그인합니다." name="bttn1"></a></div>
+      <!-- 아이디/패스워드 찾기 //-->
+      <div id="getIdPs"><a href="javaScript:doIdPasswdSearch();" alt="아이디/패스워드 찾기"><img src="./images/idpwsearch_stu.jpg" width="101" height="22" alt="아이디/패스워드 찾기"></a></div>
+      <!-- 경성포탈 사용신청 //-->
+      <div id="RegPortal"><a href="javaScript:doRegisterUser();" alt="경성포탈 회원가입"><img src="./images/member_stu.jpg" width="83" height="22" alt="경성포탈 회원가입" ></a></div>
+      <!-- 정보전산원 원격지원 사이트 이동-->
+      <div id="idpwexHelp"><a href="http://939.co.kr/ksu1/" alt="정보전산원 원격지원" target="blank"><font color='a2a2a2'>[원격지원]</font></a></div>
+
+      <!-- 경성포탈(학생로그인) 공지사항 //-->
+      <div id="PortalNoticeStd"><b>[경성포탈 공지 - 교직원 인증서 로그인 안내]</b><br>
+      <b>교직원(외래교수 포함)은 '공인인증서'로만 로그인</b> 하실 수 있으니<br>
+      <a href="javascript:setTab('cert');"><font color=ff0000>교직원 로그인(Click)</font></a>을 이용하시기 바랍니다.<br>
+      (단, 퇴직교직원의 경우 기존처럼 학생로그인에서 ID,Pw를 이용하여 로그인 하실 수 있습니다)</b></div>
+    </div>
+    
+    <!-- 인증서 로그인 TAB //-->
+    <div id="certArea" style="display:none">
+      <!-- 배경 이미지-->
+      <div id="CertBackground"><img src="./images/background_emp.jpg"></div>
+      <!-- 사진(광고) 이미지 -->
+      <div id="CertImg"><iframe src='http://www.ks.ac.kr/ksadmin/ksadm_e/ksadm_e01/portalLogin_viewer.php' width=365 height=327 frameborder=0 scrolling=0 name='portalImgFrame' alt='포탈로그인 이미지 영역' id='portalImgFrame' marginwidth=0 marginheight=0></iframe></div>
+      <!-- TAB -->
+      <div id="CertTab_idpw"><a href="javascript:setTab('idpw');" alt="기존 로그인 방식"><img src="./images/tabstu_emp.jpg" width="151" height="25" alt="기존 로그인 방식"></a></div>
+      <div id="CertTab_cert"><!--a href="javascript:setTab('cert');" alt="교직원 로그인 방식"--><img src="./images/tabemp_emp.jpg" width="151" height="25" alt="교직원 로그인 방식"><!--/a--></div>
+      <!-- 인증서 로그인 버튼 //-->
+      <div id="CertLogin"><a href="javascript:doCertLogin();" alt="등록된 인증서를 이용한 로그인"><img src="./images/loginbtn_emp.jpg" width="128" height="45" alt="등록된 인증서를 이용한 로그인"></a></div>
+      <!-- 인증서 모듈 로딩 준비중 -->
+      <div id="CertWait">Loading...</div>
+      <!-- 인증서 등록/재등록 //-->
+      <div id="CertRegister"><a href="javascript:CertRegister();" alt="인증서 등록 및 재등록"><img src="./images/cert_register.jpg" width="94" height="20" alt="인증서 등록 및 재등록"></a></a></div>    
+      <!-- 인증서 백업 //-->
+      <div id="CertBackup"><a href="javascript:doCertBackup();" alt="인증서 백업"><img src="./images/cert_backup.jpg" width="94" height="20" alt="인증서 백업"></a></a></div>
+      <!-- 로그인 이용안내 //-->
+      <div id="Certndoc"><a href="javascript:openCertHelp();" alt="로그인 이용안내"><img src="./images/login_doc.jpg" width="93" height="22" alt="로그인 이용안내"></a></a></div>
+      <!-- 아이디/패스워드 찾기 //-->
+      <div id="CertgetIdPs"><a href="javaScript:doIdPasswdSearch();" alt="아이디/패스워드 찾기"><img src="./images/idpwsearch_emp.jpg" width="107" height="22" alt="아이디/패스워드 찾기"></a></div>
+      <!-- 경성포탈 사용신청 //-->
+      <div id="CertRegPortal"><a href="javaScript:doRegisterUser();" alt="경성포탈 회원가입"><img src="./images/member_emp.jpg" width="90" height="22" alt="경성포탈 회원가입" ></a></div>
+      <!-- 정보전산원 원격지원 사이트 이동-->
+      <div id="CertexHelp"><a href="http://939.co.kr/ksu1/" alt="정보전산원 원격지원" target="blank"><font color='a2a2a2'>[원격지원]</font></a></div>
+
+      <!-- 경성포탈(교직원로그인) 공지사항 //-->
+      <div id="PortalNoticePro"><b>[경성포탈 공지 - 인증서로그인 안내]</b><br>
+         <b>교직원은 '공인인증서'로만 로그인</b> 하실 수 있으므로 <a href="javascript:openCertHelp();"><b><font color=ff0000>이용안내(Click)</font></b></a>를 참고하시기 바랍니다.<br>
+         ※ <b><a href='http://m.ks.ac.kr' target='_blank'><font color=ff0000>경성대학교 모바일 홈페이지(click)</font></a>를 이용하시면 인증서 없이 웹메일 및 공고/공지를 확인</font> 하실 수 있습니다.</b></div>
+         
+    </div>
+
+    
+  </div>
+</div>
+</form>
+<br>
+
+<!-- 여기까지가 디자인 설정부분입니다. //-->
+<!-- 웹메일 세션삭제(로그아웃시) -->
+<!--iframe height=0 marginheight=0 src="http://mail.ks.ac.kr/user/logout.crd" frameborder=0 marginwidth=0 scrolling=no width=0></iframe-->
+
+</body>
+</html>
+<SCRIPT type="text/JavaScript">
+  //3초 후 인증서 로그인 버튼 활성화
+  //setTimeout("viewDiv()", 3000);
+  //function viewDiv()
+  //{
+    document.getElementById("CertWait").style.display = "none";
+    document.getElementById("CertLogin").style.display = "block";
+  //}
+</SCRIPT>
